@@ -24,14 +24,33 @@ public class GraphEdge {
         this.source = source;
         this.destination = destination;
         this.type = type;
-        this.status = (type == EdgeType.ASSIGNMENT) ? EdgeStatus.ASSIGNED : EdgeStatus.REQUESTED;
+
+        if (type == EdgeType.ASSIGNMENT) {
+            this.status = EdgeStatus.ASSIGNED;
+        } else {
+            this.status = EdgeStatus.REQUESTED;
+        }
     }
 
     // Getters and setters
-    public GraphNode getSource() { return source; }
-    public GraphNode getDestination() { return destination; }
-    public EdgeStatus getStatus() { return status; }
-    public EdgeType getType() { return type; }
-    public void setStatus(EdgeStatus status) { this.status = status; }
+    public GraphNode getSource() {
+        return source;
+    }
+
+    public GraphNode getDestination() {
+        return destination;
+    }
+
+    public EdgeStatus getStatus() {
+        return status;
+    }
+
+    public EdgeType getType() {
+        return type;
+    }
+
+    public void setStatus(EdgeStatus status) {
+        this.status = status;
+    }
 }
 

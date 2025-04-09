@@ -52,19 +52,11 @@ public class ResourceGraph {
     }
 
     /**
-     * Creates random edges between processes and resources.
-     */
-    private void createRandomEdges() {
-        assignProcessesToResources();
-        createResourceRequests();
-    }
-
-    /**
      * Creates assignment edges from resources to processes.
      */
     private void assignProcessesToResources() {
         for (Process process : processes) {
-            if (!resources.isEmpty()) {
+            if (!resources.isEmpty()) { // isn't
                 Resource assignedResource = getRandomResource();
                 edges.add(new GraphEdge(assignedResource, process, EdgeType.ASSIGNMENT));
             }
@@ -85,6 +77,14 @@ public class ResourceGraph {
                 }
             }
         }
+    }
+
+    /**
+     * Creates random edges between processes and resources.
+     */
+    private void createRandomEdges() {
+        assignProcessesToResources();
+        createResourceRequests();
     }
 
     /**
@@ -123,7 +123,7 @@ public class ResourceGraph {
         // Execute processes in order of their resource requirements (fewest first)
         for (Process process : getProcessExecutionOrder()) {
             simulationStep++;
-            System.out.printf("=== STEP %d: EXECUTING PROCESS %s ===%n", simulationStep, process);
+            System.out.println("=== STEP " + simulationStep + ": EXECUTING PROCESS " + process);
 
             List<Resource> requiredResources = getRequiredResources(process);
             boolean canExecute = attemptResourceAcquisition(process, requiredResources);
@@ -135,7 +135,7 @@ public class ResourceGraph {
                 completeProcessExecution(process, requiredResources);
                 printCurrentState();
             } else {
-                System.out.printf("%s BLOCKED - REQUIRED RESOURCES UNAVAILABLE%n", process);
+                System.out.println(process + " BLOCKED - REQUIRED RESOURCES UNAVAILABLE");
             }
 
             System.out.println();
@@ -153,7 +153,7 @@ public class ResourceGraph {
     }
 
     /**
-     * Gets all resources required by a specific process.
+     * Gets all resources required by a specific process mapping them transforming it into a Resource type obj.
      * @param process The process to check
      * @return List of required resources
      */

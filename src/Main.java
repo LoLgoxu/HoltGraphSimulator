@@ -29,26 +29,3 @@ public class Main {
     }
 }
 
-/**
- * Enumerates the possible types of edges in the graph.
- */
-enum EdgeType {
-    /** Edge representing a resource assigned to a process */
-    ASSIGNMENT,
-    /** Edge representing a process requesting a resource */
-    REQUEST
-}
-
-/**
- * Enumerates the possible statuses of edges in the graph.
- */
-enum EdgeStatus {
-    /** Resource is assigned to process */
-    ASSIGNED,
-    /** Resource is being requested */
-    REQUESTED,
-    /** Resource has been acquired */
-    ACQUIRED,
-    /** Resource request is blocked */
-    BLOCKED
-}

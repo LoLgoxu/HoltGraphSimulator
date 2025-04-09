@@ -21,6 +21,7 @@ public abstract class GraphNode {
      */
     @Override
     public String toString() {
+        // getClassName'sFirstChar + number of id like R19 or P19
         return getClass().getSimpleName().charAt(0) + String.valueOf(id);
     }
 
@@ -31,9 +32,16 @@ public abstract class GraphNode {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        GraphNode other = (GraphNode) obj;
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        GraphNode other = (GraphNode) obj; // other = (type) object
+
         return id == other.id;
     }
 

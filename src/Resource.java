@@ -18,7 +18,9 @@ public class Resource extends GraphNode {
      * Checks if the resource is allocated.
      * @return true if allocated, false otherwise
      */
-    public boolean isAllocated() { return allocated; }
+    public boolean isAllocated() {
+        return allocated;
+    }
 
     /**
      * Allocates the resource.
@@ -28,6 +30,31 @@ public class Resource extends GraphNode {
         if (allocated) {
             throw new IllegalStateException("Resource already allocated");
         }
+
         allocated = true;
     }
+}
+
+/**
+ * Enumerates the possible types of edges in the graph.
+ */
+enum EdgeType {
+    /** Edge representing a resource assigned to a process */
+    ASSIGNMENT,
+    /** Edge representing a process requesting a resource */
+    REQUEST
+}
+
+/**
+ * Enumerates the possible statuses of edges in the graph.
+ */
+enum EdgeStatus {
+    /** Resource is assigned to process */
+    ASSIGNED,
+    /** Resource is being requested */
+    REQUESTED,
+    /** Resource has been acquired */
+    ACQUIRED,
+    /** Resource request is blocked */
+    BLOCKED
 }

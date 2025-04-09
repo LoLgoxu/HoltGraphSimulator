@@ -18,7 +18,9 @@ public class Process extends GraphNode {
      * Checks if the process has completed.
      * @return true if completed, false otherwise
      */
-    public boolean isCompleted() { return completed; }
+    public boolean isCompleted() {
+        return completed;
+    }
 
     /**
      * Marks the process as completed.
